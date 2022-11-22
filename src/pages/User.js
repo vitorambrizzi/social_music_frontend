@@ -1,11 +1,13 @@
-import { Link } from 'react-router-dom'
 import Header from '../components/Header'
+import MainContainer from '../components/MainContainer'
 
 const User = () => {
   return (
     <>
       <Header />
-      <p>This is User!</p>
+      <MainContainer>
+        <p>This is User!</p>
+      </MainContainer>
     </>
   )
 }
