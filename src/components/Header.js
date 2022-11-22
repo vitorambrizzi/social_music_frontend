@@ -2,12 +2,14 @@ import styled from 'styled-components'
 
 const Header = () => {
   return (
-    <div>header</div>
+    <Background>Here is the Header</Background>
   )
 }
 
-const Header = styled.header`
-    
+const Background = styled.header`
+  background-color: #000000;
+  height: 50px;
+  color: #ffffff;
 `
 
 export default Header
