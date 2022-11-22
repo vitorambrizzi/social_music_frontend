@@ -6,7 +6,6 @@ const Home = () => {
     <>
       <Header />
       <p>This is home!</p>
-      <Link to='/user'>User Page</Link>
     </>
   )
 }
