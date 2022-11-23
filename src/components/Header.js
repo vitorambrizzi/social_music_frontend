@@ -2,17 +2,10 @@ import { Link, NavLink } from 'react-router-dom'
 import styled from 'styled-components'
 
 const Header = () => {
-
-  const Search = async (value) => {
-    const response = await fetch(`https://api.spotify.com/v1/search?q=${value}&type=album`)
-    const result = await response.json()
-    console.log(result)
-  }
-
   const handleSubmit = (event) => {
     event.preventDefault()
     const search = event.target.search.value
-    Search(search)
+    console.log(search)
   }
 
   return (
@@ -25,11 +18,10 @@ const Header = () => {
             <button type='submit'>Send</button>
           </form>
         </div>  
-        <nav>
-          <ul>
-            <li><NavLink to='/user'>User</NavLink></li>
-          </ul>
-        </nav>
+        <Navbar>
+            <Spacer><NavLink to='/user'>User</NavLink></Spacer>
+            <Spacer><NavLink to='/spotify'>Spotify</NavLink></Spacer>
+        </Navbar>
       </Container>
     </Background>
   )
@@ -50,5 +42,17 @@ const Container = styled.div`
   justify-content: space-between;
   width: 60%;
 `
+
+const Navbar = styled.nav`
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin: 0;
+  padding: 0;
+`
+const Spacer = styled.span`
+  margin: 0 0 0 20px;
+`
+
 
 export default Header
