@@ -11,7 +11,7 @@ const MainContainer = ({children}) => {
 }
 
 const Background = styled.main`
-  background-color: #ffffff;
+  background-color: #d405e7;
   padding: 20px 0;
   display: flex;
   justify-content: center;
@@ -19,7 +19,7 @@ const Background = styled.main`
 
 const Container = styled.div`
   width: 60%;
-  background-color: #ffffff;
+  background-color: #d405e7;
 `
 
 export default MainContainer
