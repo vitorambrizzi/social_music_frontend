@@ -1,11 +1,16 @@
 import { Link, NavLink } from 'react-router-dom'
 import styled from 'styled-components'
 
+// Buffer.from(str, 'base64')
+// buf.toString('base64')
+
 const Header = () => {
+  const Buffer = require('buffer/').Buffer
+
   const handleSubmit = (event) => {
     event.preventDefault()
-    const search = event.target.search.value
-    console.log(search)
+    const search = new Buffer(event.target.search.value)
+    console.log(search.toString('base64'))
   }
 
   return (
