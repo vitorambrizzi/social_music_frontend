@@ -1,9 +1,9 @@
 import { SPOTIFY_API } from '../config'
 import getToken from '../helpers/spotify'
 
-const Artists = () => {
-  const getArtist = async (id, authorizationToken) => {
-    const response = await fetch(`${SPOTIFY_API}/artists/${id}`, {
+const Tracks = () => {
+  const getTrack = async (id, authorizationToken) => {
+    const response = await fetch(`${SPOTIFY_API}/tracks/${id}`, {
       method: 'GET',
       headers: {
         'Authorization': 'Bearer ' + authorizationToken,
@@ -17,21 +17,21 @@ const Artists = () => {
 
   const handleSubmit = async (event) => {
     event.preventDefault()
-    const { artistId } = event.target
+    const { trackId } = event.target
     const token = await getToken()
-    const artist = await getArtist(artistId.value, token)
-    console.log(artist)
+    const track = await getTrack(trackId.value, token)
+    console.log(track)
   }
 
   return (
     <>
-      <h1>Get Artist</h1>
+      <h1>Get Track</h1>
       <form onSubmit={(event) => handleSubmit(event)}>
-        <input type='text' name='artistId' placeholder='Search for an artist' />
+        <input type='text' name='trackId' placeholder='Search for a track' />
         <button type='submit'>Send</button>
       </form>
     </>
   )
 }
 
-export default Artists
+export default Tracks

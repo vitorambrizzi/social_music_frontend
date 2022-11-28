@@ -24,8 +24,9 @@ const Header = () => {
           </form>
         </div>  
         <Navbar>
-            <Spacer><NavLink to='/user'>User</NavLink></Spacer>
-            <Spacer><NavLink to='/spotify'>Spotify</NavLink></Spacer>
+          <NavLink to='/albums'><Spacer>Albums</Spacer></NavLink>
+          <NavLink to='/artists'><Spacer>Artists</Spacer></NavLink>
+          <NavLink to='/tracks'><Spacer>Tracks</Spacer></NavLink>
         </Navbar>
       </Container>
     </Background>
