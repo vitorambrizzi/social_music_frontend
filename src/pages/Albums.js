@@ -4,6 +4,7 @@ import getToken from '../helpers/spotify'
 const Albums = () => {
     const getAlbum = async (id, authorizationToken) => {
         const response = await fetch(`${SPOTIFY_API}/albums/${id}`, {
+            method: 'GET',
             headers: {
                 'Authorization': 'Bearer ' + authorizationToken,
                 'Accept': 'application/json'
@@ -24,7 +25,7 @@ const Albums = () => {
 
     return (
         <>
-            <h1>Albums</h1>
+            <h1>Get Album</h1>
             <form onSubmit={(event) => handleSubmit(event)}>
                 <input type='text' name='albumId' placeholder='Search for an album' />
                 <button type='submit'>Send</button>
