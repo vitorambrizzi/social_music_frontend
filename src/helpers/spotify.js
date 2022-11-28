@@ -15,9 +15,8 @@ const getToken = async () => {
 
   const response = await fetch(SPOTIFY_ACCOUNTS, requestOptions)
   const result = await response.json()
-  const { accessToken } = result
 
-  return accessToken
+  return result.access_token
 }
 
 export default getToken
