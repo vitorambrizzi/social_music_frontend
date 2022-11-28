@@ -27,6 +27,7 @@ const Header = () => {
           <NavLink to='/albums'><Spacer>Albums</Spacer></NavLink>
           <NavLink to='/artists'><Spacer>Artists</Spacer></NavLink>
           <NavLink to='/tracks'><Spacer>Tracks</Spacer></NavLink>
+          <NavLink to='/playlists'><Spacer>Playlists</Spacer></NavLink>
         </Navbar>
       </Container>
     </Background>
