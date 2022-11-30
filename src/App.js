@@ -5,6 +5,7 @@ import Albums from './pages/Albums'
 import Artists from './pages/Artists'
 import Tracks from './pages/Tracks'
 import Playlists from './pages/Playlists'
+import Search from './pages/Search'
 
 function App() {
   return (
@@ -15,6 +16,7 @@ function App() {
         <Route path='artists' element={<Artists />} />
         <Route path='tracks' element={<Tracks />} />
         <Route path='playlists' element={<Playlists />} />
+        <Route path='search/:query' element={<Search />} />
       </Route>
     </Routes>
   );

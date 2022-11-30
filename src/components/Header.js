@@ -1,10 +1,10 @@
 import { Link, NavLink } from 'react-router-dom'
-import { SPOTIFY_API } from '../config'
+import { useNavigate } from 'react-router-dom'
 import styled from 'styled-components'
-import getToken from '../helpers/spotify'
 
 const Header = () => {
-  const search = async (query, authorizationToken) => {
+  const navigate = useNavigate()
+  /*const search = async (query, authorizationToken) => {
     const response = await fetch(`${SPOTIFY_API}/search?q=${query}&type=album,artist,playlist,track,episode`, {
       method: 'GET',
       headers: {
@@ -23,6 +23,13 @@ const Header = () => {
     const token = await getToken()
     const response = await search(query, token)
     console.log(response)
+  }*/
+
+  const handleSubmit = async (event) => {
+    event.preventDefault()
+    const query = event.target.search.value
+    const uri = encodeURI(query)
+    navigate(`/search/${uri}`)
   }
 
   return (
