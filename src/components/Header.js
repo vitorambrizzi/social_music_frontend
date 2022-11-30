@@ -1,16 +1,28 @@
 import { Link, NavLink } from 'react-router-dom'
+import { SPOTIFY_API } from '../config'
 import styled from 'styled-components'
-
-// Buffer.from(str, 'base64')
-// buf.toString('base64')
+import getToken from '../helpers/spotify'
 
 const Header = () => {
-  const Buffer = require('buffer/').Buffer
+  const search = async (query, authorizationToken) => {
+    const response = await fetch(`${SPOTIFY_API}/search?q=${query}&type=album,artist,playlist,track,episode`, {
+      method: 'GET',
+      headers: {
+        'Authorization': 'Bearer ' + authorizationToken,
+        'Accept': 'application/json'
+      }
+    })
+    const result = await response.json()
 
-  const handleSubmit = (event) => {
+    return result
+  }
+
+  const handleSubmit = async (event) => {
     event.preventDefault()
-    const search = new Buffer(event.target.search.value)
-    console.log(search.toString('base64'))
+    const query = event.target.search.value
+    const token = await getToken()
+    const response = await search(query, token)
+    console.log(response)
   }
 
   return (
