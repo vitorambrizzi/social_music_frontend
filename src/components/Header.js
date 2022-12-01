@@ -1,6 +1,7 @@
 import { Link, NavLink } from 'react-router-dom'
 import { useNavigate } from 'react-router-dom'
 import styled from 'styled-components'
+import slugify from '../helpers/url'
 
 const Header = () => {
   const navigate = useNavigate()
@@ -28,8 +29,10 @@ const Header = () => {
   const handleSubmit = async (event) => {
     event.preventDefault()
     const query = event.target.search.value
-    const uri = encodeURI(query)
-    navigate(`/search/${uri}`)
+    const uri = query.toLowerCase()
+    const re = new RegExp(/[àáâãäåª]+/, 'g')
+    console.log(uri.replace(re, 'a'))
+    //navigate(`/search/${uri}`)
   }
 
   return (
