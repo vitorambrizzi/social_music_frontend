@@ -1,5 +1,5 @@
 import { SPOTIFY_API } from '../config'
-import getToken from '../helpers/spotify'
+import {getToken} from '../helpers/spotify'
 
 const Tracks = () => {
   const getTrack = async (id, authorizationToken) => {
