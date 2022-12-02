@@ -5,34 +5,12 @@ import slugify from '../helpers/url'
 
 const Header = () => {
   const navigate = useNavigate()
-  /*const search = async (query, authorizationToken) => {
-    const response = await fetch(`${SPOTIFY_API}/search?q=${query}&type=album,artist,playlist,track,episode`, {
-      method: 'GET',
-      headers: {
-        'Authorization': 'Bearer ' + authorizationToken,
-        'Accept': 'application/json'
-      }
-    })
-    const result = await response.json()
-
-    return result
-  }
 
   const handleSubmit = async (event) => {
     event.preventDefault()
     const query = event.target.search.value
-    const token = await getToken()
-    const response = await search(query, token)
-    console.log(response)
-  }*/
-
-  const handleSubmit = async (event) => {
-    event.preventDefault()
-    const query = event.target.search.value
-    const uri = query.toLowerCase()
-    const re = new RegExp(/[àáâãäåª]+/, 'g')
-    console.log(uri.replace(re, 'a'))
-    //navigate(`/search/${uri}`)
+    const uri = slugify(query)
+    navigate(`/search/${uri}`)
   }
 
   return (
