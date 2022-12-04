@@ -4,28 +4,26 @@ import { search } from '../helpers/spotify'
 
 const Search = () => {
   const { query } = useParams()
-  const [searchResults, setSearchResults] = useState({
-    albums: '',
-    artists: '',
-    playlists: '',
-    tracks: ''
-  })
+  const [ type, setType ] = useState('album,artist,track')
 
   const handleSearch = async () => {
-    const result = await search(query)
-    setSearchResults(result)
-    console.log(searchResults)
+    const result = await search(query, type)
+    console.log(result)
   }
 
   useEffect(() => {
     handleSearch()
   // eslint-disable-next-line
-  }, [])
+  }, [type])
 
   return (
     <>
       <h1>Search</h1>
-      {query}
+      console.log results for:<br/>
+      <button onClick={() => setType('album,artist,track')}>All</button><br/>
+      <button onClick={() => setType('album')}>Albums</button><br/>
+      <button onClick={() => setType('artist')}>Artists</button><br/>
+      <button onClick={() => setType('track')}>Tracks</button><br/>
     </>
   )
 }

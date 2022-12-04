@@ -19,9 +19,9 @@ const getToken = async () => {
   return result.access_token
 }
 
-const search = async (query) => {
+const search = async (query, type) => {
   const authorizationToken = await getToken()
-  const response = await fetch(`${SPOTIFY_API}/search?q=${query}&type=album,artist,playlist,track`, {
+  const response = await fetch(`${SPOTIFY_API}/search?q=${query}&type=${type}`, {
     method: 'GET',
     headers: {
       'Authorization': 'Bearer ' + authorizationToken,
