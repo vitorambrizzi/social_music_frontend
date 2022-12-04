@@ -61,5 +61,4 @@ const Spacer = styled.span`
   margin: 0 0 0 20px;
 `
 
-
 export default Header

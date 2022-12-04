@@ -7,8 +7,8 @@ const Search = () => {
   const [ type, setType ] = useState('album,artist,track')
 
   const handleSearch = async () => {
-    const result = await search(query, type)
-    console.log(result)
+    const results = await search(query, type)
+    console.log(results)
   }
 
   useEffect(() => {
@@ -18,12 +18,13 @@ const Search = () => {
 
   return (
     <>
-      <h1>Search</h1>
+      <h2>Search</h2>
       console.log results for:<br/>
       <button onClick={() => setType('album,artist,track')}>All</button><br/>
       <button onClick={() => setType('album')}>Albums</button><br/>
       <button onClick={() => setType('artist')}>Artists</button><br/>
       <button onClick={() => setType('track')}>Tracks</button><br/>
+      <hr />
     </>
   )
 }
