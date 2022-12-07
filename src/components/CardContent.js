@@ -1,6 +1,6 @@
 import styled from 'styled-components'
 
-const CardContent = (name, imgUrl, uri) => {
+const CardContent = ({imgUrl, name, uri}) => {
   return (
     <Card>
       <Avatar src={imgUrl} />
@@ -13,7 +13,7 @@ const CardContent = (name, imgUrl, uri) => {
 }
 
 const Card = styled.div`
-  width: 300px;
+  width: 500px;
   background-color: #eeeeee;
   display: flex;
   padding: 10px;
