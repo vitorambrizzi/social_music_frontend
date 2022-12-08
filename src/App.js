@@ -12,9 +12,9 @@ function App() {
       <Route path='/' element={<Layout />}>
         <Route index element={<Home />} />
         <Route path='search/:type/:query' element={<Search />} />
-        <Route path='album' element={<Albums />} />
-        <Route path='artist' element={<Artists />} />
-        <Route path='track' element={<Tracks />} />
+        <Route path='album/:id' element={<Albums />} />
+        <Route path='artist/:id' element={<Artists />} />
+        <Route path='track/:id' element={<Tracks />} />
       </Route>
     </Routes>
   );

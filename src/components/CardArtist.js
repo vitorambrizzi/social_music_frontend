@@ -1,12 +1,17 @@
 import styled from 'styled-components'
+import { Link } from 'react-router-dom'
 
-const CardArtist = ({imgUrl, name, uri}) => {
+const CardArtist = ({id, imgUrl, name, uri}) => {
   return (
     <Card>
-      <Avatar src={imgUrl} alt={name} />
+      <Link to={`/artist/${id}`}>
+        <Avatar src={imgUrl} alt={name} />
+      </Link>
       <Box>
-        <Username>{name}</Username>
-        <Text>{uri}</Text>
+        <Link to={`/artist/${id}`}>
+          <Username>{name}</Username>
+          <Text>{uri}</Text>
+        </Link>
       </Box>
     </Card>
   )

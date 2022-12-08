@@ -1,12 +1,17 @@
 import styled from 'styled-components'
+import { Link } from 'react-router-dom'
 
-const CardTrack = ({imgUrl, name, uri}) => {
+const CardTrack = ({id, imgUrl, name, uri}) => {
   return (
     <Card>
-      <Avatar src={imgUrl} alt={name} />
+      <Link to={`/track/${id}`}>
+        <Avatar src={imgUrl} alt={name} />
+      </Link>
       <Box>
-        <Username>{name}</Username>
-        <Text>{uri}</Text>
+        <Link to={`/track/${id}`}>
+          <Username>{name}</Username>
+          <Text>{uri}</Text>
+        </Link>
       </Box>
     </Card>
   )

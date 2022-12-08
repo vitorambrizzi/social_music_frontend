@@ -1,12 +1,17 @@
 import styled from 'styled-components'
+import { Link } from 'react-router-dom'
 
-const CardAlbum = ({imgUrl, name, uri}) => {
+const CardAlbum = ({id, imgUrl, name, uri}) => {
   return (
     <Card>
-      <Avatar src={imgUrl} alt={name} />
+      <Link to={`/album/${id}`}>
+        <Avatar src={imgUrl} alt={name} />
+      </Link>
       <Box>
-        <Username>{name}</Username>
-        <Text>{uri}</Text>
+        <Link to={`/album/${id}`}>
+          <Username>{name}</Username>
+          <Text>{uri}</Text>
+        </Link>
       </Box>
     </Card>
   )

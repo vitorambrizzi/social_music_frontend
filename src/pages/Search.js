@@ -3,6 +3,7 @@ import { useNavigate, useParams } from 'react-router-dom'
 import { search } from '../helpers/spotify'
 import CardAlbum from '../components/CardAlbum'
 import CardArtist from '../components/CardArtist'
+import CardTrack from '../components/CardTrack'
 
 const Search = () => {
   const { query } = useParams()
@@ -49,7 +50,7 @@ const Search = () => {
         :
           albums.map((album) => {
             return (
-              <CardAlbum key={album.id} imgUrl={album.images[2].url} name={album.name} uri={album.uri} />
+              <CardAlbum key={album.id} id={album.id} imgUrl={album.images[2].url} name={album.name} uri={album.uri} />
             )
           })
       }
@@ -62,11 +63,11 @@ const Search = () => {
           artists.map((artist) => {
             if (artist?.images[0]?.url) {
               return (
-                <CardArtist key={artist.id} imgUrl={artist.images[0].url} name={artist.name} uri={artist.uri} />
+                <CardArtist key={artist.id} id={artist.id} imgUrl={artist.images[0].url} name={artist.name} uri={artist.uri} />
               )
             } else {
               return (
-                <CardArtist key={artist.id} name={artist.name} uri={artist.uri} />
+                <CardArtist key={artist.id} id={artist.id} name={artist.name} uri={artist.uri} />
               )
             }
           })
@@ -79,7 +80,7 @@ const Search = () => {
         :
           tracks.map((track) => {
             return (
-              <CardAlbum key={track.id} imgUrl={track.album.images[2].url} name={track.name} uri={track.uri} />
+              <CardTrack key={track.id} id={track.id} imgUrl={track.album.images[2].url} name={track.name} uri={track.uri} />
             )
           })
       }
