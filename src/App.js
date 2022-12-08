@@ -11,7 +11,7 @@ function App() {
     <Routes>
       <Route path='/' element={<Layout />}>
         <Route index element={<Home />} />
-        <Route path='search/:query' element={<Search />} />
+        <Route path='search/:type/:query' element={<Search />} />
         <Route path='album' element={<Albums />} />
         <Route path='artist' element={<Artists />} />
         <Route path='track' element={<Tracks />} />

@@ -10,7 +10,7 @@ const Header = () => {
     event.preventDefault()
     const query = event.target.search.value
     const uri = slugify(query)
-    navigate(`/search/${uri}`)
+    navigate(`/search/all/${uri}`)
   }
 
   return (
