@@ -1,4 +1,4 @@
-import {CLIENT_ID, CLIENT_SECRET, SPOTIFY_ACCOUNTS, SPOTIFY_API} from '../config'
+import { CLIENT_ID, CLIENT_SECRET, SPOTIFY_ACCOUNTS, SPOTIFY_API } from '../config'
 
 const getToken = async () => {
   const Buffer = require('buffer/').Buffer
@@ -33,4 +33,18 @@ const search = async (query, type) => {
   return result
 }
 
-export { search, getToken }
+const getContent = async (id, contentType) => {
+  const authorizationToken = await getToken()
+  const response = await fetch(`${SPOTIFY_API}/${contentType}/${id}`, {
+    method: 'GET',
+    headers: {
+        'Authorization': 'Bearer ' + authorizationToken,
+        'Accept': 'application/json'
+    }
+})
+const result = await response.json()
+
+return result
+}
+
+export { getContent, getToken, search }
