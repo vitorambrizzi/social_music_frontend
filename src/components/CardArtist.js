@@ -1,9 +1,9 @@
 import styled from 'styled-components'
 
-const CardContent = ({imgUrl, name, uri}) => {
+const CardArtist = ({imgUrl, name, uri}) => {
   return (
     <Card>
-      <Avatar src={imgUrl} />
+      <Avatar src={imgUrl} alt={name} />
       <Box>
         <Username>{name}</Username>
         <Text>{uri}</Text>
@@ -23,9 +23,8 @@ const Card = styled.div`
 
 const Avatar = styled.img`
   background-color: #cccccc;
-  border-radius: 50%;
-  height: 50px;
-  width: 50px;
+  height: 160px;
+  width: 160px;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -47,4 +46,4 @@ const Text = styled.p`
   color: #333333;
 `
 
-export default CardContent
+export default CardArtist
