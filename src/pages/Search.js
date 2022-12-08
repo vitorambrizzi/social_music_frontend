@@ -7,10 +7,10 @@ import CardTrack from '../components/CardTrack'
 
 const Search = () => {
   const { query } = useParams()
-  const [ type, setType ] = useState('album,artist,track')
-  const [ albums, setAlbums ] = useState([])
-  const [ artists, setArtists ] = useState([])
-  const [ tracks, setTracks ] = useState([])
+  const [type, setType] = useState('album,artist,track')
+  const [albums, setAlbums] = useState([])
+  const [artists, setArtists] = useState([])
+  const [tracks, setTracks] = useState([])
   const navigate = useNavigate()
 
   const handleSearch = async () => {
@@ -29,10 +29,8 @@ const Search = () => {
     else setType(filter)
   }
   
-  useEffect(() => {
-    handleSearch()
-    // eslint-disable-next-line
-  }, [type])
+  // eslint-disable-next-line
+  useEffect(() => {handleSearch()}, [type])
   
   return (
     <>
@@ -61,7 +59,7 @@ const Search = () => {
           <p>No artists!</p>
         :
           artists.map((artist) => {
-            if (artist?.images[0]?.url) {
+            if (artist?.images[0]) {
               return (
                 <CardArtist key={artist.id} id={artist.id} imgUrl={artist.images[0].url} name={artist.name} uri={artist.uri} />
               )

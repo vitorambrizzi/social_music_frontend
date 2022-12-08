@@ -1,7 +1,7 @@
 import styled from 'styled-components'
 import { Link } from 'react-router-dom'
 
-const CardArtist = ({id, imgUrl, name, uri}) => {
+const CardArtist = ({ id, imgUrl, name, uri }) => {
   return (
     <Card>
       <Link to={`/artist/${id}`}>
