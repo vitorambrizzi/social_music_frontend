@@ -5,6 +5,7 @@ import Album from './pages/Album'
 import Artist from './pages/Artist'
 import Track from './pages/Track'
 import Search from './pages/Search'
+import SignUp from './pages/SignUp'
 
 function App() {
   return (
@@ -12,6 +13,7 @@ function App() {
       <Route path='/' element={<Layout />}>
         <Route index element={<Home />} />
         <Route path='search/:type/:query' element={<Search />} />
+        <Route path='sign-up' element={<SignUp />} />
         <Route path='album/:id' element={<Album />} />
         <Route path='artist/:id' element={<Artist />} />
         <Route path='track/:id' element={<Track />} />
