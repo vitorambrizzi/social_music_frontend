@@ -1,16 +1,35 @@
 import { Link, NavLink } from 'react-router-dom'
 import { useNavigate } from 'react-router-dom'
+import { signOut } from '../helpers/authentication'
+import useAuthStore from '../hooks/useAuthStore'
 import styled from 'styled-components'
 import slugify from '../helpers/url'
 
 const Header = () => {
+  const [userLogged, setUserLogged] = useAuthStore()
   const navigate = useNavigate()
 
-  const handleSubmit = async (event) => {
+  const handleSearch = async (event) => {
     event.preventDefault()
     const query = event.target.search.value
     const uri = slugify(query)
     navigate(`/search/all/${uri}`)
+  }
+
+  const handleSignOut = async () => {
+    const result = await signOut(userLogged.idUser, userLogged.token)
+    if (result?.success) {
+      console.log(result.success.message)
+      localStorage.removeItem('user-authentication')
+      setUserLogged({
+        isLogged: false,
+        idUser: '',
+        token: ''
+      })
+      navigate('/')
+    } else {
+      console.log(result)
+    }
   }
 
   return (
@@ -18,14 +37,24 @@ const Header = () => {
       <Container>
         <Link to='/'>Social Music</Link>
         <div>
-          <form onSubmit={(event) => handleSubmit(event)}>
+          <form onSubmit={(event) => handleSearch(event)}>
             <input type='text' name='search' placeholder='Search'></input>
             <button type='submit'>Send</button>
           </form>
         </div>  
         <Navbar>
-          <NavLink to='/sign-in'><Spacer>Sign In</Spacer></NavLink>
-          <NavLink to='/sign-up'><Spacer>Sign Up</Spacer></NavLink>
+          {
+            userLogged.isLogged ? (
+              <>
+                <NavLink onClick={() => handleSignOut()}><Spacer>Sign Out</Spacer></NavLink>
+              </>
+            ) : (
+              <>
+                <NavLink to='/sign-in'><Spacer>Sign In</Spacer></NavLink>
+                <NavLink to='/sign-up'><Spacer>Sign Up</Spacer></NavLink>
+              </>
+            )
+          }
         </Navbar>
       </Container>
     </Background>

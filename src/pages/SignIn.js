@@ -3,8 +3,8 @@ import { useNavigate } from 'react-router-dom'
 import useAuthStore from '../hooks/useAuthStore'
 
 const SignIn = () => {
+  const [, setUserLogged] = useAuthStore()
   const navigate = useNavigate()
-  const [userLogged, setUserLogged] = useAuthStore()
 
   const login = async (credentials) => {
     const response = await fetch(`${BASE_PATH}auth/login`, {
