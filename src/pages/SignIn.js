@@ -1,8 +1,10 @@
 import { BASE_PATH } from '../config'
 import { useNavigate } from 'react-router-dom'
+import useAuthStore from '../hooks/useAuthStore'
 
 const SignIn = () => {
   const navigate = useNavigate()
+  const [userLogged, setUserLogged] = useAuthStore()
 
   const login = async (credentials) => {
     const response = await fetch(`${BASE_PATH}auth/login`, {
@@ -16,6 +18,13 @@ const SignIn = () => {
     const result = await response.json()
 
     if (result?.success) {
+      const authentication = {
+        isLogged: true,
+        idUser: result.data.id_user,
+        token: result.data.token
+      }
+      setUserLogged(authentication)
+      localStorage.setItem('user-authentication', JSON.stringify(authentication))
       console.log(result.success.message)
       navigate('/')
     }
