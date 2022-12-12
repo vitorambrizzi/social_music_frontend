@@ -17,7 +17,7 @@ const SignUp = () => {
 
     if (result?.success) {
       console.log(result.success.message)
-      navigate('/home')
+      navigate('/')
     }
     else {
       console.log(result)
