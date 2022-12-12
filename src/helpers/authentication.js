@@ -1,5 +1,19 @@
 import { BASE_PATH } from '../config'
 
+const signIn = async (credentials) => {
+  const response = await fetch(`${BASE_PATH}auth/login`, {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json', 
+      'Accept': 'application/json'
+    },
+    body: JSON.stringify(credentials)
+  })
+  const result = await response.json()
+
+  return result
+}
+
 const signOut = async (idUser, token) => {
   const response = await fetch(`${BASE_PATH}auth/logout`, {
     method: 'DELETE',
@@ -14,4 +28,4 @@ const signOut = async (idUser, token) => {
   return result
 }
 
-export { signOut }
+export { signIn, signOut }

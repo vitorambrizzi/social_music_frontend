@@ -1,22 +1,13 @@
-import { BASE_PATH } from '../config'
 import { useNavigate } from 'react-router-dom'
+import { signIn } from '../helpers/authentication'
 import useAuthStore from '../hooks/useAuthStore'
 
 const SignIn = () => {
   const [, setUserLogged] = useAuthStore()
   const navigate = useNavigate()
 
-  const login = async (credentials) => {
-    const response = await fetch(`${BASE_PATH}auth/login`, {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json', 
-        'Accept': 'application/json'
-      },
-      body: JSON.stringify(credentials)
-    })
-    const result = await response.json()
-
+  const handleSignIn = async (credentials) => {
+    const result = await signIn(credentials)
     if (result?.success) {
       const authentication = {
         isLogged: true,
@@ -36,7 +27,7 @@ const SignIn = () => {
   const handleSubmit = (event) => {
     event.preventDefault()
     const { email, pass } = event.target
-    login({
+    handleSignIn({
       email: email.value,
       pass: pass.value
     })
