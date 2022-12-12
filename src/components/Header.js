@@ -24,6 +24,7 @@ const Header = () => {
           </form>
         </div>  
         <Navbar>
+          <NavLink to='/sign-in'><Spacer>Sign In</Spacer></NavLink>
           <NavLink to='/sign-up'><Spacer>Sign Up</Spacer></NavLink>
         </Navbar>
       </Container>
