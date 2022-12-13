@@ -5,11 +5,16 @@ import { useParams } from 'react-router-dom'
 const Artist = () => {
   const { id } = useParams()
   const [artist, setArtist] = useState({})
+  const [userList, setUserList] = useState(false)
 
   const getArtist = async () => {
-    const result = await getContent(id, 'artists')
-    console.log(result)
-    setArtist(result)
+    if (id === 'all') {
+      setUserList(true)
+    } else {
+      const result = await getContent(id, 'artists')
+      console.log(result)
+      setArtist(result)
+    }
   }
 
   // eslint-disable-next-line
@@ -17,11 +22,19 @@ const Artist = () => {
 
   return (
     <>
-      <h1>{artist.name}</h1>
-      <img alt={artist.name} />
-      <p>
-        Popularity: {artist.popularity}.
-      </p>
+      {
+        userList
+        ?
+          <h2>This user has no favorite artists!</h2>
+        :
+          <>
+            <h1>{artist.name}</h1>
+            <img alt={artist.name} />
+            <p>
+              Popularity: {artist.popularity}.
+            </p>
+          </>
+      }
     </>
   )
 }

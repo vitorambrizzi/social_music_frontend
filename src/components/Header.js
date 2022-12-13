@@ -46,6 +46,9 @@ const Header = () => {
           {
             userLogged.isLogged ? (
               <>
+                <NavLink to='/album/all'><Spacer>Albums</Spacer></NavLink>
+                <NavLink to='/artist/all'><Spacer>Artists</Spacer></NavLink>
+                <NavLink to='/track/all'><Spacer>Tracks</Spacer></NavLink>
                 <NavLink onClick={() => handleSignOut()}><Spacer>Sign Out</Spacer></NavLink>
               </>
             ) : (
