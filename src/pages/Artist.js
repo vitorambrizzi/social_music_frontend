@@ -6,6 +6,7 @@ const Artist = () => {
   const { id } = useParams()
   const [artist, setArtist] = useState({})
   const [userList, setUserList] = useState(false)
+  const [isLoading, setIsLoading] = useState(true)
 
   const getArtist = async () => {
     if (id === 'all') {
@@ -15,6 +16,7 @@ const Artist = () => {
       console.log(result)
       setArtist(result)
     }
+    setIsLoading(false)
   }
 
   // eslint-disable-next-line
@@ -23,17 +25,30 @@ const Artist = () => {
   return (
     <>
       {
-        userList
+        isLoading
         ?
-          <h2>This user has no favorite artists!</h2>
+          <h2>Loading content!</h2>
         :
-          <>
-            <h1>{artist.name}</h1>
-            <img alt={artist.name} />
-            <p>
-              Popularity: {artist.popularity}.
-            </p>
-          </>
+          userList
+          ?
+            <h2>This user has no favorite artists!</h2>
+          :
+            <>
+              <h1>{artist.name}</h1>
+              <p>
+                <a href={artist.external_urls.spotify} target='_blank' rel='noreferrer'>See in Spotify</a>
+              </p>
+              <img src={artist.images[0].url} alt={artist.name} />
+              <p>
+                Spotify followers: {artist.followers.total};
+              </p>
+              <p>
+                Popularity: {artist.popularity};
+              </p>
+              <p>
+                Genres: {artist.genres.map((genre) => genre + ', ')}
+              </p>
+            </>
       }
     </>
   )
